@@ -9,14 +9,15 @@ on:
 # 파이프라인
 jobs:
     # CI name 선언, 머신 및 OS 등이 필요 -> 지금은 Github Action(무료)를 사용
-    ci:
+    cicd:
+    # CI
         # OS 지정
         runs-on: ubuntu-latest
 
         # details
         steps:
             - name: 코드 checkout # 소스코드 pull
-              uses: actions/checkout@v3 # 라이브러리
+              uses: actions/checkout@v5 # 라이브러리
 
             - name: 코드 확인/검증
               run: | # " | " == 여러가지의 리눅스 명령어 사용
@@ -24,3 +25,10 @@ jobs:
                 ls -al
                 cat main.py
               shell: bash
+
+        # 지속적 통합 + build or unit test 수행 및 etc..
+
+    # CD 작업
+
+
+

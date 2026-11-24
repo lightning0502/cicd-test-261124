@@ -29,6 +29,15 @@ jobs:
         # 지속적 통합 + build or unit test 수행 및 etc..
 
     # CD 작업
-
+        # github -> Repository secrets -> new repository secret 눌러서 환경 변수처럼 사용 가능함ㄷㄷ (EC2_KEY, HOST_IP, USER_NAME)
+            - name: sourcecode copy to EC2
+              uses: appleboy/scp-action@master
+              with:
+                host: ${{ secrets.HOST_IP }}
+                username: ${{ secrets.USER_NAME }}
+                key: ${{ secrets.EC2_KEY }}
+                port: 22
+                source: .
+                target: "/home/ubuntu/project"
 
 

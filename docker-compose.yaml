@@ -34,9 +34,9 @@ services:
       MYSQL_PASSWORD : 1234
     
 
-  app:
-    # app이라는 디렉토리 내부에 존재하는 Dockerfile을 기반으로 이미지 빌드 -> 컨테이너 생성
-    build: ./app # 개발 환경에서 유용함 + 이미지는 CI 서버에서 생성 -> <dockerhub 계정>/fastapi:1.41으로 이미지 다운로드 경로 명시
+  app: # app이라는 디렉토리 내부에 존재하는 Dockerfile을 기반으로 이미지 빌드 -> 컨테이너 생성
+    # build: ./app # 개발 환경에서 유용함 + 이미지는 CI 서버에서 생성 -> <dockerhub 계정>/fastapi:1.41으로 이미지 다운로드 경로 명시
+    image: entpsun/fastapi-app:1.0
 
     container_name: fastapi_app
     restart: unless-stopped
@@ -72,7 +72,9 @@ services:
   proxy:
     # image: nginx:alpine
     # 이미지는 CI 서버에서 처리, EC2 docker-compose에서는 <계정이름>/nginx-proxy:1.0 으로 이미지 다운로드 경로 명시
-    build: ./nginx
+    # build: ./nginx
+    image: entpsun/nginx-proxy:1.0
+
     container_name: nginx_proxy
     restart: unless-stopped
     ports:

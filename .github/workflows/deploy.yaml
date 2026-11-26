@@ -26,8 +26,6 @@ jobs:
 
       # nginx proxy image build & push
 
-
-
   cd:
     # CI 작업 이후 CD로 순서(defendency) 보장
     needs: ci

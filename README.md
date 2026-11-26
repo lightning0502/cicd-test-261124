@@ -1,5 +1,6 @@
 # synopsis
-간단한 CI/CD 구성을 위한 프로젝트!
+간단한 CI/CD 구성을 위한 프로젝트(컨테이너 기반)
+
 
 # stack
 - app
@@ -14,3 +15,36 @@
 
 - venv setting
     - Docker (Dockerfile, Docker-compose)
+
+
+# Structure
+root:
+|   .gitignore
+|   docker-compose.yaml
+|   README.md
+|   
++---.github
+|   \---workflows
+|           deploy.yaml
+|           
++---app
+|   |   Dockerfile
+|   |   main.py
+|   |   requirements.txt
+|   |   
+|   +---static
+|   |   +---assets
+|   |   |   \---img
+|   |   |       \---credit
+|   |   |               
+|   |   +---css
+|   |   |       
+|   |   \---js
+|   |           
+|   \---templates
+|           index.html
+|           login-v2.html
+|           
++---nginx
+|       Dockerfile
+|       web.conf

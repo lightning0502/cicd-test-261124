@@ -81,8 +81,9 @@ jobs:
             cd /home/ubuntu
 
             # 컨테이너 구성 (.env를 생성해서 주입 가능) + image는 CI서버에서 했으므로 --build 필요 없음
-            docker-compose up -d
+            docker compose up -d
 
-            docker image prune =f
+            docker image prune -f
+
 
 

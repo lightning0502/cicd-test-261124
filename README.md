@@ -17,6 +17,10 @@
     - Docker (Dockerfile, Docker-compose)
 
 
+# 개발 환경 구동 명령어
+docker-compose up -d --build
+
+
 # Structure
 root:
 |   .gitignore

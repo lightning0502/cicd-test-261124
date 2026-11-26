@@ -15,16 +15,34 @@ jobs:
     # details
     steps:
       # 소스코드 pull
-      - name: 코드 checkout
+      - name: code checkout
         uses: actions/checkout@v5 # 라이브러리
 
       # 도커허브 로그인 -> 이미지 push
-
+      - name: docker-hub login
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USER_NAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
       
       # fastAPI app image build & push
-
+      - name: build & push fastAPI
+        uses: docker/build-push-action@v4
+        with:
+          context: ./app
+          file: ./app/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USER_NAME }}/fastapi-app:1.0
 
       # nginx proxy image build & push
+      - name: build & push nginx proxy
+        uses: docker/build-push-action@v4
+        with:
+          context: ./nginx
+          file: ./nginx/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USER_NAME }}/nginx-proxy:1.0
+
 
   cd:
     # CI 작업 이후 CD로 순서(defendency) 보장

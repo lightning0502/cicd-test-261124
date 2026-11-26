@@ -3,7 +3,7 @@ name: PUSH 기반 CI/CD 테스트
 # event trigger 할당 (CI/CD가 작동하게 되는 원인) + main 브런치에서 push하면 트리거 발동
 on:
   push:
-    branches: ["refector"] # n개의 브랜치 제어
+    branches: ["refactor"] # n개의 브랜치 제어
 
 # 파이프라인
 jobs:
